@@ -8,6 +8,8 @@
 #
 from flask_restplus import Api
 
+from hejtado.quido import app
+
 # Set Flask API
-api = Api(version='0.1', title='Hejtado Quido API',
+api = Api(app, version='0.1', title='Hejtado Quido API',
           description='API that gives access to the Quido hardware box')

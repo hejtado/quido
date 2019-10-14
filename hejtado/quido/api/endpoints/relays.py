@@ -12,5 +12,4 @@ from hejtado.quido.api import api
 
 
 log = logging.getLogger(__name__)
-
 ns = api.namespace('quido/relays', description='Operations with Quido relays')
