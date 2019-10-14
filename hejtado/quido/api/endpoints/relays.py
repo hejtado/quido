@@ -8,7 +8,7 @@
 #
 import logging
 
-from hejtado.quido.app import api
+from hejtado.quido.api import api
 
 
 log = logging.getLogger(__name__)
