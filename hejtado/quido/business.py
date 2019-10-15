@@ -43,7 +43,23 @@ class Quido:
         oid = "1.3.6.1.4.1.18248.16.3.1.1.1." + str(relayID)
         log.debug("get_relay_status sends oid {}".format(oid))
         relay_state = self.__snmp_get(oid)
+        log.debug("get_relay_status received relay_state {}".format(relay_state))
+        relay_state = self.__select_return_value(relay_state)
         return relay_state
+
+    def get_relay_name(self, relayID):
+        """
+        Return the description of the relay
+        :param relayID: Integer with relay ID
+        :return: Return string with relay description
+        """
+
+        oid = "1.3.6.1.4.1.18248.16.3.1.1.2." + str(relayID)
+        log.debug("get_relay_name sends oid {}".format(oid))
+        relay_name = self.__snmp_get(oid)
+        log.debug("get_relay_status received relay_state {}".format(relay_name))
+        relay_name = self.__select_return_value(relay_name)
+        return relay_name
 
     def set_relay(self, relayID, desired_state):
         """Set the status of the relay"""
@@ -66,6 +82,15 @@ class Quido:
         else:
             return True
 
+    def __select_return_value(self, snmp_string):
+        """
+        Select and return SNMP value from input string
+        :param snmp_string: Input string
+        :return: Return splitted string
+        """
+        log.debug("__select_return_value returns: {}".format(snmp_string.rsplit("= ")[1]))
+        return snmp_string.rsplit("= ")[1]
+
     def __snmp_get(self, oid):
         """Get Quido Relay information using SNMP"""
         data = next(getCmd(SnmpEngine(),
@@ -74,8 +99,8 @@ class Quido:
                         ContextData(),
                         ObjectType(ObjectIdentity(oid)))
                     )
-        log.debug("__snmp_get returns: {}".format(data[3][0].prettyPrint()[-1]))
-        return data[3][0].prettyPrint()[-1]
+        log.debug("__snmp_get returns: {}".format(data[3][0].prettyPrint()))
+        return data[3][0].prettyPrint()
 
     def __snmp_set(self):
         pass
