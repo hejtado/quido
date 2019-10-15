@@ -68,5 +68,7 @@ class QuidoRelayItem(Resource):
         log.debug("squido get relay status is \"{}\"".format(status))
         name = quido.get_relay_name(id)
         log.debug("squido get relay name is \"{}\"".format(name))
+        type = quido.get_relay_type(id)
+        log.debug("squido get relay type is \"{}\"".format(type))
 
-        return [{'id': id, 'name': name, 'status': status}]
+        return [{'id': id, 'name': name, 'status': status, 'type': type}]

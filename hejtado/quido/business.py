@@ -45,6 +45,7 @@ class Quido:
         relay_state = self.__snmp_get(oid)
         log.debug("get_relay_status received relay_state {}".format(relay_state))
         relay_state = self.__select_return_value(relay_state)
+
         return relay_state
 
     def get_relay_name(self, relayID):
@@ -59,7 +60,29 @@ class Quido:
         relay_name = self.__snmp_get(oid)
         log.debug("get_relay_status received relay_state {}".format(relay_name))
         relay_name = self.__select_return_value(relay_name)
+
         return relay_name
+
+    def get_relay_type(self, relayID):
+        """
+        Return the type of the relay (static/pulse)
+        :param relayID: Integer with relay ID
+        :return: Return string with relay type
+        """
+
+        oid = "1.3.6.1.4.1.18248.16.3.1.1.3." + str(relayID)
+        log.debug("get_relay_name sends oid {}".format(oid))
+        relay_type = self.__snmp_get(oid)
+        log.debug("get_relay_type received relay_state {}".format(relay_type))
+        relay_type = int(self.__select_return_value(relay_type))
+        if relay_type == 1:
+            relay_type = 'static'
+        elif relay_type > 1:
+            relay_type = 'pulse'
+        else:
+            relay_type = 'unknown'
+
+        return relay_type
 
     def set_relay(self, relayID, desired_state):
         """Set the status of the relay"""
