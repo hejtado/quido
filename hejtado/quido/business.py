@@ -24,14 +24,21 @@ class Quido:
     def __create_data_structure(self):
         """Create datastructure to hold Quido values"""
 
-    def get_temperature(self):
-        """Get the temperature of thermometer connected to the Quido"""
-        temperature_obj = self.__snmp_get('1.3.6.1.4.1.18248.16.1.1.0')
-        temperature = float(temperature_obj[1][1]) / 10
+    def get_boiler_temperature(self):
+        """
+        Get the temperature of thermometer connected to the Quido
+        :return: Boiler temperature
+        """
+        oid = '1.3.6.1.4.1.18248.16.1.1.0'
+        log.debug("get_boiler_temperature sends oid {}".format(oid))
+        boiler_temperature = self.__snmp_get(oid)
+        log.debug("get_boiler_temperature received temperature string {}".format(boiler_temperature))
+        boiler_temperature = float(self.__select_return_value(boiler_temperature) / 10)
+
         # In case of negative temperature, please see Modbus and pyminimalmodbus documentation
-        if temperature > 6000:
-            temperature = temperature - 6553.6
-        return temperature
+        if boiler_temperature > 6000:
+            boiler_temperature = boiler_temperature - 6553.6
+        return boiler_temperature
 
     def get_relay_status(self, relayID):
         """

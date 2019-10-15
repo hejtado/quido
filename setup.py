@@ -12,7 +12,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='hejtado.quido',
-    version='0.1',
+    version='0.2',
     description='Thermometer Quido RESTful API based on Flask-RESTPlus',
     url='https://github.com/hejtado/quido',
     author='Lumir Jasiok',
