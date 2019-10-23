@@ -10,10 +10,15 @@
 
 from setuptools import setup, find_packages
 
+with open("README.rst", "r") as fh:
+    long_description = fh.read()
+
 setup(
     name='hejtado-quido',
-    version='0.2.2',
-    description='Thermometer Quido RESTful API based on Flask-RESTPlus',
+    version='0.2.3',
+    description='Thermometer Quido RESTful API based on Flask and Flask-RESTPlus',
+    long_description=long_description,
+    long_description_content_type="text/x-rst",
     url='https://github.com/hejtado/quido',
     author='Lumir Jasiok',
 
