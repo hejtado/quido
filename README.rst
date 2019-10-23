@@ -8,8 +8,8 @@ Installation
 
 .. code-block:: bash
 
-    tar xvfz hejtado.quido-<version>.tar.gz
-    cd hejtado.quido-0.2
+    tar xvfz hejtado-quido-<version>.tar.gz
+    cd hejtado-quido-<version>
     python setup.py install
 
 Start Hejtado
