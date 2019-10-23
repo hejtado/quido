@@ -8,6 +8,7 @@
 #
 import logging
 
+from flask import request
 from flask_restplus import Resource, fields
 
 from hejtado.quido.api import api
@@ -31,6 +32,7 @@ QUIDO_RELAYS = {1: 'prodluzovacka',
 # Initialize Quido class
 quido = Quido()
 
+
 @ns.route('/')
 class QuidoRelay(Resource):
     """
@@ -44,7 +46,8 @@ class QuidoRelay(Resource):
         Get all relays and return them as list of dictionaries
         :return: List of available relays
         """
-        return [{'id': id, 'name': name} for id, name in QUIDO_RELAYS.items()]
+        return [{'id': relay_id, 'name': name} for relay_id, name in QUIDO_RELAYS.items()]
+
 
 @ns.route('/<int:id>')
 class QuidoRelayItem(Resource):
@@ -54,23 +57,38 @@ class QuidoRelayItem(Resource):
 
     @ns.doc('get_quido_relay_values')
     @ns.marshal_with(relays)
-    def get(self, id):
+    def get(self, relay_id):
         """
         Fetch a information about relay
-        :param id: ID of the Relay
+        :param relay_id: ID of the Relay
         :return: Return information about relay
         """
-        status = int(quido.get_relay_status(id))
+        status = int(quido.get_relay_status(relay_id))
         if not status:
             status = "off"
         else:
             status = "on"
         log.debug("squido get relay status is \"{}\"".format(status))
-        name = quido.get_relay_name(id)
+        name = quido.get_relay_name(relay_id)
         log.debug("squido get relay name is \"{}\"".format(name))
-        type = quido.get_relay_type(id)
-        log.debug("squido get relay type is \"{}\"".format(type))
-        relay_values = {'id': id, 'name': name, 'status': status, 'type': type}
+        relay_type = quido.get_relay_type(relay_id)
+        log.debug("squido get relay type is \"{}\"".format(relay_type))
+        relay_values = {'id': relay_id, 'name': name, 'status': status, 'type': relay_type}
         log.info("Relay values: {}".format(relay_values))
 
         return [relay_values]
+
+    @ns.doc('set_quido_relays_values')
+    @api.expect(relays)
+    @api.response(204, 'Relay successfully updated.')
+    def put(self, relay_id):
+        """
+        Set the new status of the relay
+        :param relay_id: ID of the relay
+        :return: current relay status
+        """
+        data = request.json
+        log.debug("QuidoRelayItem put received request {}".format(data))
+        status = data['status']
+        quido.set_relay(relay_id, status)
+        return None, 204
