@@ -49,7 +49,7 @@ class QuidoRelay(Resource):
         return [{'id': relay_id, 'name': name} for relay_id, name in QUIDO_RELAYS.items()]
 
 
-@ns.route('/<int:id>')
+@ns.route('/<int:relay_id>')
 class QuidoRelayItem(Resource):
     """
     Get/Set the values on Quido Relay
