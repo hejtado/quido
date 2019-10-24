@@ -3,7 +3,6 @@ attrs==19.2.0
 Click==7.0
 Flask==1.1.1
 flask-restplus==0.13.0
-hejtado-quido==0.2.2
 importlib-metadata==0.23
 itsdangerous==1.1.0
 Jinja2==2.10.3

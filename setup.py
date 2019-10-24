@@ -15,7 +15,7 @@ with open("README.rst", "r") as fh:
 
 setup(
     name='hejtado-quido',
-    version='0.2.4',
+    version='0.2.5',
     description='Thermometer Quido RESTful API based on Flask and Flask-RESTPlus',
     long_description=long_description,
     long_description_content_type="text/x-rst",
@@ -42,5 +42,5 @@ setup(
     [console_scripts]
     hejtado-quido = hejtado.quido.app:main
     """,
-    install_requires=['flask-restplus==0.13.0'],
+    install_requires=['setuptools==41.4.0', 'pysnmp==4.4.6', 'flask-restplus==0.13.0'],
 )
