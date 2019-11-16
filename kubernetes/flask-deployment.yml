@@ -1,7 +1,7 @@
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
-  name: hejtado-quido
+  name: hejtado-quido-deployment
   labels:
     name: hejtado-quido
 spec:
@@ -12,7 +12,7 @@ spec:
         app: hejtado-quido
     spec:
       containers:
-      - name:hejtado-quido
+      - name: hejtado-quido
         image: jas02/hejtado-quido:latest
         env:
         - name: FLASK_ENV

@@ -10,8 +10,8 @@
 # Flask settings
 FLASK_SERVER = '127.0.0.1'
 FLASK_PORT = 5001
-FLASK_DEBUG = True
-FLASK_ENV = 'development'
+FLASK_DEBUG = False
+FLASK_ENV = 'production'
 
 # Flask-Restplus settings
 RESTPLUS_SWAGGER_UI_DOC_EXPANSION = 'list'
