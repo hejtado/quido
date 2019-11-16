@@ -33,7 +33,7 @@ class Quido:
         log.debug("get_boiler_temperature sends oid {}".format(oid))
         boiler_temperature = self.__snmp_get(oid)
         log.debug("get_boiler_temperature received temperature string {}".format(boiler_temperature))
-        boiler_temperature = float(self.__select_return_value(boiler_temperature) / 10)
+        boiler_temperature = float(int(self.__select_return_value(boiler_temperature)) / 10)
 
         # In case of negative temperature, please see Modbus and pyminimalmodbus documentation
         if boiler_temperature > 6000:
