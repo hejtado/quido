@@ -13,7 +13,7 @@ spec:
     spec:
       containers:
       - name: hejtado-quido
-        image: jas02/hejtado-quido:latest
+        image: jas02/hejtado-quido:0.3.0
         env:
         - name: FLASK_ENV
           value: "production"
