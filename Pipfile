@@ -1,0 +1,34 @@
+[[source]]
+name = "pypi"
+url = "https://pypi.org/simple"
+verify_ssl = true
+
+[dev-packages]
+
+[packages]
+aniso8601 = "==8.0.0"
+attrs = "==19.2.0"
+click = "==7.0"
+flask-restplus = "==0.13.0"
+importlib-metadata = "==0.23"
+itsdangerous = "==1.1.0"
+jsonschema = "==3.1.1"
+more-itertools = "==7.2.0"
+ply = "==3.11"
+pyasn1 = "==0.4.7"
+pycryptodomex = "==3.9.0"
+pyrsistent = "==0.15.4"
+pysmi = "==0.3.4"
+pysnmp = "==4.4.6"
+pytz = "==2019.3"
+six = "==1.12.0"
+zipp = "==0.6.0"
+gunicorn = "==20.0.0"
+Flask = "==1.1.1"
+Jinja2 = "==2.10.3"
+MarkupSafe = "==1.1.1"
+Pygments = "==2.4.2"
+Werkzeug = "==0.16.0"
+
+[requires]
+python_version = "3.8"
