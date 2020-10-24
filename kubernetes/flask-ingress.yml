@@ -2,14 +2,12 @@ apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
   name: hejtado-quido-ingress
-  annotations:
-    kubernetes.io/ingress.class: traefik
 spec:
   rules:
   - host: hejtado.home
     http:
       paths:
-      - path: /quido
+      - path: /api/v1/quido
         backend:
           serviceName: hejtado-quido-service
           servicePort: 80

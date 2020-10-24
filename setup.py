@@ -15,7 +15,7 @@ with open("README.rst", "r") as fh:
 
 setup(
     name='hejtado-quido',
-    version='0.3.0',
+    version='0.3.1',
     description='Thermometer Quido RESTful API based on Flask and Flask-RESTPlus',
     long_description=long_description,
     long_description_content_type="text/x-rst",
