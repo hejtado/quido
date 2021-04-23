@@ -1,6 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
+  namespace: hejtado
   name: hejtado-quido-deployment
   labels:
     name: hejtado-quido
