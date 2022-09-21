@@ -24,4 +24,3 @@ QUIDO_API_VERSION = "v1"
 
 # Quido HW setting
 QUIDO_IP = "192.168.2.241"
-
