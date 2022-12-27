@@ -42,5 +42,5 @@ setup(
     [console_scripts]
     hejtado-quido = hejtado.quido.app:main
     """,
-    install_requires=['setuptools==41.4.0', 'pysnmp==4.4.6', 'flask-restplus==0.13.0'],
+    install_requires=['setuptools==65.5.1', 'pysnmp==4.4.6', 'flask-restplus==0.13.0'],
 )
